@@ -1,5 +1,7 @@
 package com.example.weixin.controller;
 
+import java.io.StringReader;
+
 import javax.xml.bind.JAXB;
 
 import org.slf4j.Logger;
@@ -67,8 +69,9 @@ public class MessageReceiverController {
 		
 		String type =xml.substring(xml.indexOf("<MsgType><![CDATA[")+18);
 		type =type.substring(0,type.indexOf("]]></MsgType>"));
+		
 		Class<? extends InMessage> cla =MessageTypeRegister.getClass(type);
-		InMessage inMessage= JAXB.unmarshal(xml, cla);
+		InMessage inMessage= JAXB.unmarshal(new StringReader(xml), cla);
 		this.messageService.onMessage(inMessage);
 		
 		return "success";
