@@ -58,6 +58,13 @@ public class MessageReceiverController {
 				+ "收到的请求内容\n{}\n"
 				,signature,timestamp,nonce,xml);
 		
+//		if(xml.indexOf("<MsgType><![CDATA[event]]></MsgType>")>0) {
+//			
+//		}else if(xml.indexOf("<MsgType><![CDATA[location]]></MsgType>")>0) {
+//			
+//		}
+		
+		
 		String type =xml.substring(xml.indexOf("<MsgType><![CDATA[")+18);
 		type =type.substring(0,type.indexOf("]]></MsgType>"));
 		Class<? extends InMessage> cla =MessageTypeRegister.getClass(type);
