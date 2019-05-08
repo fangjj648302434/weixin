@@ -25,6 +25,7 @@ public abstract class InMessage implements Serializable {
 	@XmlElement(name="MsgId")
 	private Long msgId; 
 	
+	public InMessage() {}
 	
 	protected InMessage(String type) {
 		this.msgType=type;
