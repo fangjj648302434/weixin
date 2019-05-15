@@ -62,7 +62,7 @@ public abstract class InMessage implements Serializable {
 	}
 
 
-	private String getMsgType() {
+	public String getMsgType() {
 		return msgType;
 	}
 
